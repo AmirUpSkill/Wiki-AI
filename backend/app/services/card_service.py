@@ -11,22 +11,30 @@ from app.utils import extract_text_from_pdf
 
 # --- Custom Exceptions ---
 class CardServiceError(Exception):
-    """Base exception for card service errors."""
+    """
+        Base exception for card service errors.
+    """
     pass
 
 
 class CardNotFoundError(CardServiceError):
-    """Exception raised when a card is not found."""
+    """
+        Exception raised when a card is not found.
+    """
     pass
 
 
 class AIGenerationError(CardServiceError):
-    """Exception raised when AI generation fails."""
+    """
+        Exception raised when AI generation fails.
+    """
     pass
 
 
 class PDFParsingError(CardServiceError):
-    """Exception raised when PDF parsing fails."""
+    """
+        Exception raised when PDF parsing fails.
+    """
     pass
 
 # ---- Card Service Class  --- 
