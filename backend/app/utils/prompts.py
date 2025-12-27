@@ -63,12 +63,15 @@ QUESTION FROM USER: {question}
 DOCUMENT CONTEXT:
 {context}
 
-Your task: Answer the user's question based ONLY on the provided document context. 
-If the answer cannot be found in the context, say so explicitly.
+Your task: Answer the user's question based on the provided document context. 
+- If you can answer directly from the context, provide a clear answer.
+- If the context contains partial information, share what you can and note what's missing.
+- If the answer cannot be found in the context at all, politely explain this and suggest what kind of information would help.
+- You may use your general knowledge to provide context or clarification, but always prioritize information from the provided document.
 
 Keep your answer:
-- Clear and concise
-- Grounded in the provided text
+- Clear and conversational
+- Helpful and informative
 - Accurate and factual
 - In plain, accessible language
 

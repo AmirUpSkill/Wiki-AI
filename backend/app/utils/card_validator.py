@@ -4,7 +4,9 @@ from typing import Dict, Any
 logger = logging.getLogger(__name__)
 
 class CardValidationError(Exception):
-    """Exception raised when card validation fails."""
+    """
+        Exception raised when card validation fails.
+    """
     pass
 
 def validate_card_structure(card_data: Dict[str, Any]) -> None:

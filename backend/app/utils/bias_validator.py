@@ -4,7 +4,9 @@ from typing import Tuple, Dict, Any
 logger = logging.getLogger(__name__)
 
 class BiasValidationError(Exception):
-    """Exception raised when bias data validation fails."""
+    """
+        Exception raised when bias data validation fails.
+    """
     pass
 
 def validate_bias_response(bias_data: Dict[str, Any]) -> Tuple[float, str]:

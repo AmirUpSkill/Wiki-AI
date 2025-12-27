@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Search, Plus } from "lucide-react"
 import { useAppStore } from "@/store/app-store"
+import { cn } from "@/lib/utils"
 
 interface SearchPanelProps {
   onSearch: (query?: string) => void
@@ -19,25 +20,33 @@ export function SearchPanel({ onSearch }: SearchPanelProps) {
   }, [searchTerm, onSearch])
 
   return (
-    <div className={`w-full rounded-3xl bg-linear-to-br from-card/95 to-card/80 backdrop-blur-sm shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.16)] border border-border/30 p-6 mb-10 transform transition-all duration-300 ease-out hover:-translate-y-1 ${isFocused ? 'ring-2 ring-primary/20 shadow-[0_12px_40px_rgb(27,94,110,0.15)]' : ''}`}>
-      <div className="flex flex-col sm:flex-row gap-4 items-stretch relative">
-        <Search className={`absolute left-4 top-6 sm:top-1/2 sm:-translate-y-1/2 h-5 w-5 z-10 transition-colors duration-200 ${isFocused ? 'text-primary' : 'text-muted-foreground'}`} />
+    <div className={cn(
+      "w-full rounded-full bg-background/60 backdrop-blur-xl border border-border/40 px-2 py-2 mb-12 sticky top-6 z-30 transition-all duration-500",
+      isFocused ? "shadow-lg ring-1 ring-primary/10 bg-background/80" : "shadow-sm hover:shadow-md",
+    )}>
+      <div className="flex items-center gap-2 relative h-12">
+        <div className="pl-4 flex items-center justify-center">
+          <Search className={cn(
+            "h-5 w-5 transition-colors duration-300",
+            isFocused ? "text-primary" : "text-muted-foreground/50"
+          )} />
+        </div>
         <input
           type="text"
-          placeholder="Search cards by title..."
+          placeholder="Search history cards..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="flex-1 h-12 pl-12 pr-4 bg-transparent border-0 text-foreground placeholder:text-muted-foreground/60 focus:outline-none transition-all duration-200 text-sm font-medium"
+          className="flex-1 h-full bg-transparent border-0 text-foreground placeholder:text-muted-foreground/40 focus:outline-none text-[0.95rem] font-medium"
           aria-label="Search cards"
         />
         <button
           onClick={openAddCardDialog}
-          className="flex items-center justify-center gap-2 px-6 h-12 rounded-2xl bg-accent hover:bg-accent/90 text-white font-semibold text-sm shadow-[0_4px_12px_rgba(232,132,92,0.3)] hover:shadow-[0_6px_16px_rgba(232,132,92,0.4)] transform transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"
+          className="flex items-center justify-center gap-2 px-6 h-full rounded-full bg-accent hover:bg-accent/90 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-300 active:scale-95 whitespace-nowrap"
         >
           <Plus className="h-5 w-5" />
-          Add Card
+          <span>Add Card</span>
         </button>
       </div>
     </div>
